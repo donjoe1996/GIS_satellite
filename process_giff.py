@@ -1,19 +1,35 @@
 import imageio
+import os
 
-def run(image_filenames_param):
+def save_pngs_as_gif(pngs_path, output_gif_path, fps=1, repeat_count=3):
+    """
+    Create a GIF animation from a collection of PNG images
 
-    # list of pngs files
-    image_filenames = image_filenames_param
+    Args:
+        pngs_path (str): Path to the folder containing PNG images
+        output_gif_path (str): Path to save the output GIF animation
+        fps (int, optional): Frames per second for the GIF animation (default is 1)
+        repeat_count (int, optional): Number of times the GIF animation repeats (default is 3)
 
-    # ouput location to store gif file
-    output_path = 'I:/My Drive/2_geospatial_project/revalue_nature/output/L8_NDVI_GIF.gif'
+    Returns:
+        None
+    """
 
-    # create gif file
-    with imageio.get_writer(output_path, mode='I', fps=1) as writer:
-        for _ in range(2):  # Set repeat_count to control how many times the GIF repeats
-            for filename in image_filenames:
+    # Check if the provided folder path exists
+    if not os.path.exists(pngs_path):
+        raise FileNotFoundError("The folder path does not exist.")
+
+    # Get a list of PNG files in the provided folder
+    pngs_files_path = [os.path.join(pngs_path, f) for f in os.listdir(pngs_path) if f.endswith('.png')]
+
+    # Sort the list of PNG files alphabetically
+    sorted_path = sorted(pngs_files_path)
+
+    # Create the GIF animation
+    with imageio.get_writer(output_gif_path, mode='I', fps=fps) as writer:
+        for _ in range(repeat_count):
+            for filename in sorted_path:
                 image = imageio.imread(filename)
                 writer.append_data(image)
 
-    print('Giff created')
-
+    print('Gif created succesfully at:', output_gif_path)
