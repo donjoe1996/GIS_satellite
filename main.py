@@ -39,25 +39,26 @@ if __name__ == '__main__':
     print(tif_files)
     print(tif_files_path)
 
+
+    # Run RGB, NDVI, and false composite
     for i in tif_files_path:
 
-        #process_rgb.run(i)
+        process_rgb.run(i)
         process_ndvi.run(i)
-        #process_false_composite.run(i)
+        process_false_composite.run(i)
 
-        pass
 
     # create gif for NDVI
-    # NDVI_pngs = r'I:\My Drive\2_geospatial_project\revalue_nature\output\NDVI'
-    # NDVI_output_gif_path = r'I:\My Drive\2_geospatial_project\revalue_nature\output\L8_NDVI_GIF.gif'
-    # process_giff.save_pngs_as_gif(NDVI_pngs, NDVI_output_gif_path)
+    NDVI_pngs = r'I:\My Drive\2_geospatial_project\revalue_nature\output\NDVI'
+    NDVI_output_gif_path = r'I:\My Drive\2_geospatial_project\revalue_nature\output\L8_NDVI_GIF.gif'
+    process_giff.save_pngs_as_gif(NDVI_pngs, NDVI_output_gif_path)
 
     # #create gif for RGB
-    # RGB_pngs = r'I:\My Drive\2_geospatial_project\revalue_nature\output\RGB'
-    # RGB_output_gif_path = r'I:\My Drive\2_geospatial_project\revalue_nature\output\L8_RGB_GIF.gif'
-    # process_giff.save_pngs_as_gif(RGB_pngs, RGB_output_gif_path)
+    RGB_pngs = r'I:\My Drive\2_geospatial_project\revalue_nature\output\RGB'
+    RGB_output_gif_path = r'I:\My Drive\2_geospatial_project\revalue_nature\output\L8_RGB_GIF.gif'
+    process_giff.save_pngs_as_gif(RGB_pngs, RGB_output_gif_path)
 
     #create gif for FalseComposite
-    # false_composite_pngs = r'I:\My Drive\2_geospatial_project\revalue_nature\output\FalseComposite'
-    # false_composite_output_gif_path = r'I:\My Drive\2_geospatial_project\revalue_nature\output\L8_FalseComposte_GIF.gif'
-    # process_giff.save_pngs_as_gif(false_composite_pngs, false_composite_output_gif_path)
+    false_composite_pngs = r'I:\My Drive\2_geospatial_project\revalue_nature\output\FalseComposite'
+    false_composite_output_gif_path = r'I:\My Drive\2_geospatial_project\revalue_nature\output\L8_FalseComposte_GIF.gif'
+    process_giff.save_pngs_as_gif(false_composite_pngs, false_composite_output_gif_path)

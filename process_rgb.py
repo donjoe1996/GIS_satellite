@@ -1,6 +1,4 @@
 import os
-
-from img import Image
 from img2 import ImageProcessor
 
 def run(image_path):
