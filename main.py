@@ -1,9 +1,18 @@
-# import all libraries
-import numpy as np
-import matplotlib.pyplot as plt
-import rasterio
-from rasterio.plot import show
+"""
+Module to process satellite images and create GIF animations.
+
+This script processes satellite images to create GIF animations for NDVI, RGB, and false color composite images.
+
+Author: Yogi Winardhana
+
+"""
+
+import sys
 import os
+
+import numpy as np
+from osgeo import gdal
+import rasterio
 import imageio
 
 import process_ndvi
@@ -11,13 +20,15 @@ import process_rgb
 import process_false_composite
 import process_giff
 
+print(f"Python version {sys.version}")
 print(f"Numpy version {np.__version__}")
 print(f"Rasterio version: {rasterio.__version__}")
 print(f"imageio version: {imageio.__version__}")
+print(f"GDAL version: {gdal.__version__}")
 
 if __name__ == '__main__':
-
     # parent folder
+    # Make sure to set up this dir first
     folder_path = r'I:\My Drive\2_geospatial_project\revalue_nature'
 
     # create folder to store pngs for RGB and NDVI
@@ -39,14 +50,12 @@ if __name__ == '__main__':
     print(tif_files)
     print(tif_files_path)
 
-
     # Run RGB, NDVI, and false composite
     for i in tif_files_path:
 
         process_rgb.run(i)
         process_ndvi.run(i)
         process_false_composite.run(i)
-
 
     # create gif for NDVI
     NDVI_pngs = r'I:\My Drive\2_geospatial_project\revalue_nature\output\NDVI'
